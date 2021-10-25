@@ -1,9 +1,10 @@
 # show database info of mysql server.
 
 mysqlデータベース情報を表示する
+必要なモノ
+CakePHP4 が動作するPHPとmysql
 
 ## Installation
-
 ```bash
 mkdir dbinfo
 cd dbinfo
@@ -29,6 +30,10 @@ if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
         ->toEnv()
         ->toServer();
 }
+
+場合によっては
+        ->putenv(true)
+とするが、条件確認中
 ```
 
 ## httpsが有効になっているので無効化する
@@ -44,6 +49,10 @@ bin/cake server -p 8765
 
 ## bake
 bakeしていくとテーブル一覧の viewから内容を表示できる
+```
+bin/cake bake all user
+```
+
 
 
 
