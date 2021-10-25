@@ -1,8 +1,6 @@
-# show database info of mysql server.
-
-mysqlデータベース情報を表示する
-必要なモノ
-CakePHP4 が動作するPHPとmysql
+# mysqlデータベース情報を表示する
+必要なモノ  
+CakePHP4 が動作するPHPとmysql  
 
 ## Installation
 ```bash
@@ -20,7 +18,7 @@ export DATABASE_PASSWORD="your_password"
 ```
 デフォルトmysqlデータベースになっているので適宜 app_local.php で変更
 
-.env を有効にする
+.env を有効にする  
 config/bootstrap.php 63行付近
 ```php
 if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
@@ -52,7 +50,12 @@ bakeしていくとテーブル一覧の viewから内容を表示できる
 ```
 bin/cake bake all user
 ```
-
-
+## 画面サンプル
+table list  
+(https://user-images.githubusercontent.com/83142803/138778492-f649434d-0c4e-4f79-878e-6fbe28168aea.png)
+columns   
+(https://user-images.githubusercontent.com/83142803/138778504-9d1ac53b-cff6-4ed1-b9d3-8e1656c81c27.png)
+baked page  
+(https://user-images.githubusercontent.com/83142803/138778518-facaa20f-2db3-450f-9bce-75436a177884.png)
 
 
