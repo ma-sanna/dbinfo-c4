@@ -41,7 +41,7 @@
             <tbody>
                 <?php foreach ($info['status'] as $item): ?>
                 <tr>
-                  <td><?= $this->Html->link('📄', ['controller' => $item['Name'], 'action' => 'view'], ['title' => 'show baked page']) ?></td>
+                  <td><?= $this->Html->link('📄', ['controller' => $item['Name']], ['title' => 'show baked page']) ?></td>
                   <td><?= $this->Html->Link($item['Name'], ['action' => 'table', $item['Name'], $dbName], ['title' => 'show table define']) ?></td>
                   <td><?= $item['Comment'] ?></td>
                   <td align="right"><?= number_format($item['Rows']) ?></td>
