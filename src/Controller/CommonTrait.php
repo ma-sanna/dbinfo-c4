@@ -1,13 +1,13 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 syntax=php: */
-/**
- *
- * 
- */
 declare(strict_types=1);
 
 namespace App\Controller;
 
+/**
+ *
+ * 
+ */
 trait CommonTrait{
     public function traitlog($message, $level = \Psr\Log\LogLevel::ERROR, $context = []): bool
     {

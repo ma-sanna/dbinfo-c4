@@ -7,9 +7,11 @@ namespace App\Model;
 use Cake\Datasource\ConnectionManager;
 use Cake\Core\Configure;
 
+use Cake\Log\LogTrait;
+
 class Db
 {
-    use \Cake\Log\LogTrait {}
+    use LogTrait {}
 
     protected $dbcName = 'default';
     protected $dbName = null;
