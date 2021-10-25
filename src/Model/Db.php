@@ -105,7 +105,7 @@ class Db
      * テーブル情報表のheadを取得する
      *
      * @param array table info
-     * @param string ignore head scv
+     * @param string ignore header name scv
      */
     public function getHead($rows, string $ignores = '')
     {
