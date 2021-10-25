@@ -1,4 +1,5 @@
 <?php
+/* vim: set expandtab tabstop=4 shiftwidth=4 syntax=php: */
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -6,9 +7,9 @@ namespace App\Controller;
 use App\Model\Db;
 
 /**
- * Db Controller
+ * get database info.
  *
- * @method \App\Model\Entity\Db[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @auther ikeda.ver2@gmail.com
  */
 class DbController extends AppController
 {

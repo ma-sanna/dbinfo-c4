@@ -9,12 +9,15 @@ use Cake\Core\Configure;
 
 class Db
 {
+    use \Cake\Log\LogTrait {}
+
     protected $dbcName = 'default';
     protected $dbName = null;
     protected $db;
 
     public function __construct(string $name = null)
     {
+// $this->log(__FILE__ . ' ' . __FUNCTION__ . " start ----");
         if ($name) {
             $this->dbcName = $name;
         }
@@ -38,6 +41,10 @@ class Db
     }
 
 
+    /**
+     * データベース名一覧を取得
+     *
+     */
     public function getDatabases()
     {
         $sql = "SHOW DATABASES";
@@ -45,6 +52,9 @@ class Db
         return $rows;
     }
 
+    /**
+     * 指定データベースに含まれるテーブルの情報を取得
+     */
     public function getTableStatus($dbName)
     {
         $sql = "SHOW TABLE STATUS FROM {$dbName}";
@@ -108,5 +118,4 @@ class Db
 
         return $result;
     }
-
 }
