@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Http\Exception\NotFoundException;
+use Cake\Http\Exception\InternalErrorException;
+
 use App\Model\Db;
 
 /**
@@ -37,14 +40,12 @@ class DbController extends AppController
         }
 
         // DB の SELECTを準備
-        $ret = $model->getDatabases();
-        $dblist = $ret;
-        $this->set('dbs', $dblist);
+        $dblist = $model->getDatabases();
 
         // 含まれるテーブルの情報を取得
-        $ret = $model->getTableStatus($dbName);
-        $info = $ret;
+        $info = $model->getTableStatus($dbName);
 
+        $this->set('dbs', $dblist);
         $this->set('dbcName', $model->getDbcName());
         $this->set('dbName', $dbName);
         $this->set('info', $info);
@@ -64,11 +65,7 @@ class DbController extends AppController
         $dbName = $this->request->getParam('dbName');
 
         $model = new Db();
-        $ret = $model->getTableInfo($tableName, $dbName);
-        if ($ret === false) {
-            // TODO Exception を扱う方法を考える
-        }
-        $info = $ret;
+        $info = $model->getTableInfo($tableName, $dbName);
 
         $this->set('dbName', $dbName);
         $this->set('tableName', $tableName);

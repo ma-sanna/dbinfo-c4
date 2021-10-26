@@ -27,7 +27,7 @@ class Db
 
         $this->dbName = $this->db->config()['database'];
 
-        // dump($this->db->config());
+        // $this->log(var_export($this->db->config(), true));
 
         return;
     }
@@ -42,7 +42,6 @@ class Db
         return $this->dbcName;
     }
 
-
     /**
      * データベース名一覧を取得
      *
@@ -50,7 +49,8 @@ class Db
     public function getDatabases()
     {
         $sql = "SHOW DATABASES";
-        $rows = $this->db->execute($sql)->fetchAll('assoc');                          
+        $rows = $this->db->execute($sql)->fetchAll('assoc');
+
         return $rows;
     }
 
@@ -82,7 +82,6 @@ class Db
         $rows = $this->db->execute($sql)->fetchAll('assoc');
         $result['columns'] = $rows;
         $result['columns_head'] = $this->getHead($rows, 'Privileges');
-        // value を指定して unset 
 
         $sql = "SHOW INDEX FROM {$tableName}";
         $rows = $this->db->execute($sql)->fetchAll('assoc');

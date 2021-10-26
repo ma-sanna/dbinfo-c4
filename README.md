@@ -1,4 +1,4 @@
-# mysqlデータベース情報を表示する
+# mysqlデータベース設定情報を表示する
 必要なモノ  
 CakePHP4 が動作するPHPとmysql  
 
