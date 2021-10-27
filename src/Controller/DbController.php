@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\Http\Exception\NotFoundException;
-use Cake\Http\Exception\InternalErrorException;
-
 use App\Model\Db;
 
 /**

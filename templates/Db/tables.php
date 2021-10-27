@@ -26,7 +26,6 @@
   </div>
 </div>
 </form>
-
     <h4>SHOW TABLE STATUS FROM <?= $dbName ?>;</h4>
     <div class="table-responsive">
         <table>
