@@ -15,8 +15,8 @@ composer install
 vi config/.env
 export DATABASE_USERNAME="your_id"
 export DATABASE_PASSWORD="your_password"
+export DATABASE_DATABASE="your_database"
 ```
-デフォルトmysqlデータベースになっているので適宜 app_local.php で変更
 
 .env を有効にする  
 config/bootstrap.php 63行付近

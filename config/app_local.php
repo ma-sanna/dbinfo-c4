@@ -53,7 +53,7 @@ return [
             'encoding' => 'utf8mb4',
             'username' => env('DATABASE_USERNAME', 'my_app'),
             'password' => env('DATABASE_PASSWORD', 'secret'),
-            'database' => 'mysql',
+            'database' => env('DATABASE_DATABASE', 'mysql'),
             'timezone' => 'Asia/Tokyo',
 
             /*
