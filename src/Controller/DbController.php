@@ -18,6 +18,7 @@ class DbController extends AppController
     /**
      * 指定のデータベースに含まれるテーブルの情報
      *
+     * @param string $dbName 表示対象データベース名
      */
     public function tables()
     {
@@ -25,8 +26,12 @@ class DbController extends AppController
         // default のDB名を取得
         $defaultDbName = $model->getDbName();
 
+        // URLパラメータから
+        $dbName = $this->request->getParam('dbName');
         // POSTから
-        $dbName = $this->request->getData('dbname') ?? '';
+        if (empty($dbName)) {
+            $dbName = $this->request->getData('dbname') ?? '';
+        }
         // GETから
         if (empty($dbName)) {
             $dbName = $this->request->getQuery('dbname') ?? '';
@@ -35,6 +40,7 @@ class DbController extends AppController
         if (empty($dbName)) {
             $dbName = $defaultDbName;
         }
+// $this->log($dbName);
 
         // DB の SELECTを準備
         $dblist = $model->getDatabases();

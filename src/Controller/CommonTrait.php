@@ -9,13 +9,18 @@ namespace App\Controller;
  * 
  */
 trait CommonTrait{
-    public function traitlog($message, $level = \Psr\Log\LogLevel::ERROR, $context = []): bool
+    /**
+     * overwride log function
+     *
+     * @auther ikeda.ver2@gmil.com
+     */
+    public function log($message, $level = \Psr\Log\LogLevel::ERROR, $context = []): bool
     {
         if (!is_string($message)) {
             $message = var_export($message, true);
         }
 
-        $info = 'Trait::Log ' . var_export($this->request->getParam('controller'), true);
+        $info = 'CommonTrait::Log ' . var_export($this->request->getParam('controller'), true);
         $caller = debug_backtrace();
         $r = 1; // 呼び出し元階層を指定
         for ($i = 0;$i <= $r;$i++) {

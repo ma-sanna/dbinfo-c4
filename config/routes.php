@@ -52,6 +52,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
      */
     // $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $builder->connect('/', ['controller' => 'Db', 'action' => 'tables']);
+    $builder->connect('/db/tables/:dbName', ['controller' => 'Db', 'action' => 'tables']);
     $builder->connect('/db/table/:tableName/:dbName', ['controller' => 'Db', 'action' => 'table']);
 
     /*
