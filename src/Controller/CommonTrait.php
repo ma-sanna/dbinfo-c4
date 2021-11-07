@@ -20,7 +20,7 @@ trait CommonTrait{
             $message = var_export($message, true);
         }
 
-        $info = 'CommonTrait::Log ' . var_export($this->request->getParam('controller'), true);
+        $info = 'CommonTrait::Log ' . $this->request->getParam('controller') . '/' . $this->request->getParam('action');
         $caller = debug_backtrace();
         $r = 1; // 呼び出し元階層を指定
         for ($i = 0;$i <= $r;$i++) {

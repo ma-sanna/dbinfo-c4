@@ -15,6 +15,12 @@ class DbController extends AppController
 {
     use CommonTrait {}
 
+    public function initialize(): void
+    {
+        $this->loadComponent('DbInfo');
+        parent::initialize();
+    }
+
     /**
      * 指定のデータベースに含まれるテーブルの情報
      *
@@ -22,9 +28,8 @@ class DbController extends AppController
      */
     public function tables()
     {
-        $model = new Db();
         // default のDB名を取得
-        $defaultDbName = $model->getDbName();
+        $defaultDbName = $this->DbInfo->getDbName();
 
         // URLパラメータから
         $dbName = $this->request->getParam('dbName');
@@ -40,16 +45,15 @@ class DbController extends AppController
         if (empty($dbName)) {
             $dbName = $defaultDbName;
         }
-// $this->log($dbName);
 
         // DB の SELECTを準備
-        $dblist = $model->getDatabases();
+        $dblist = $this->DbInfo->getDatabases();
 
         // 含まれるテーブルの情報を取得
-        $info = $model->getTableStatus($dbName);
+        $info = $this->DbInfo->getTableStatus($dbName);
 
         $this->set('dbs', $dblist);
-        $this->set('dbcName', $model->getDbcName());
+        $this->set('dbcName', $this->DbInfo->getDbcName());
         $this->set('dbName', $dbName);
         $this->set('info', $info);
     }
@@ -67,8 +71,7 @@ class DbController extends AppController
         $tableName = $this->request->getParam('tableName');
         $dbName = $this->request->getParam('dbName');
 
-        $model = new Db();
-        $info = $model->getTableInfo($tableName, $dbName);
+        $info = $this->DbInfo->getTableInfo($tableName, $dbName);
 
         $this->set('dbName', $dbName);
         $this->set('tableName', $tableName);
