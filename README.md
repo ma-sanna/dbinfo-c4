@@ -46,7 +46,8 @@ bin/cake server -p 8765
 ```
 
 ## bake
-bakeしていくとテーブル一覧の viewから内容を表示できる
+bakeしていくとテーブル一覧の viewから内容を表示できる  
+対象は default に設定されているデータベース  
 ```
 bin/cake bake all user
 ```

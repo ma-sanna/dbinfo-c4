@@ -83,17 +83,17 @@ class DbInfoComponent extends Component
         $sql = "SHOW FULL COLUMNS FROM {$tableName}";
         $rows = $this->db->execute($sql)->fetchAll('assoc');
         $result['columns'] = $rows;
-        $result['columns_head'] = $this->getHead($rows, 'Privileges');
+        $result['columns_head'] = $this->getHeader($rows, 'Privileges');
 
         $sql = "SHOW INDEX FROM {$tableName}";
         $rows = $this->db->execute($sql)->fetchAll('assoc');
         $result['index'] = $rows;
-        $result['index_head'] = $this->getHead($rows);
+        $result['index_head'] = $this->getHeader($rows);
 
         $sql = "SHOW TABLE STATUS WHERE Name='{$tableName}'";
         $rows = $this->db->execute($sql)->fetchAll('assoc');
         $result['status'] = $rows;
-        $result['status_head'] = $this->getHead($rows);
+        $result['status_head'] = $this->getHeader($rows);
 
         $sql = "SHOW CREATE TABLE {$tableName}";
         $rows = $this->db->execute($sql)->fetchAll('assoc');
@@ -103,12 +103,12 @@ class DbInfoComponent extends Component
     }
 
     /**
-     * テーブル情報表のheadを取得する
+     * テーブル情報表のheaderを取得する
      *
      * @param array table info
      * @param string ignore header name scv
      */
-    public function getHead($rows, string $ignores = '')
+    public function getHeader($rows, string $ignores = '')
     {
         $result = [];
         $igno = explode(',', $ignores);
