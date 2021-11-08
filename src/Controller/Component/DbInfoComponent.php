@@ -1,45 +1,47 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 syntax=php: */
-declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Controller\Component;
+
+use Cake\Controller\Component;
 
 use Cake\Datasource\ConnectionManager;
 use Cake\Core\Configure;
-
 use Cake\Log\LogTrait;
 
-class DbNouse
+/**
+ *
+ */
+class DbInfoComponent extends Component
 {
     use LogTrait {}
 
-    protected $dbcName = 'default';
-    protected $dbName = null;
+    protected $dbcName = 'default'; // connection name
+    protected $dbName = null;   // database name
     protected $db;
 
-    public function __construct(string $name = null)
+    public function initialize(array $config): void
     {
-// $this->log(__FILE__ . ' ' . __FUNCTION__ . " start ----");
-        if ($name) {
-            $this->dbcName = $name;
+        $this->log(__FILE__ . ' ' . __FUNCTION__ . " start ----");
+
+        if (isset($config['dbcName'])) {
+            $this->dbcName = $config['dbcName'];
         }
         $this->db = ConnectionManager::get($this->dbcName);
 
         $this->dbName = $this->db->config()['database'];
 
-        // $this->log(var_export($this->db->config(), true));
-
-        return;
-    }
-
-    public function getDbName()
-    {
-        return $this->dbName;
+        parent::initialize($config);
     }
 
     public function getDbcName()
     {
         return $this->dbcName;
+    }
+
+    public function getDbName()
+    {
+        return $this->dbName;
     }
 
     /**
@@ -119,4 +121,5 @@ class DbNouse
 
         return $result;
     }
+
 }
